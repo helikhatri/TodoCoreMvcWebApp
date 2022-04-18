@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoCoreMvcWebApp", "TodoCoreMvcWebApp\TodoCoreMvcWebApp.csproj", "{53AFE50B-C93B-4380-8622-B78B0B636D91}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53AFE50B-C93B-4380-8622-B78B0B636D91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53AFE50B-C93B-4380-8622-B78B0B636D91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53AFE50B-C93B-4380-8622-B78B0B636D91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53AFE50B-C93B-4380-8622-B78B0B636D91}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD2F7C5C-C629-4CB5-BDB9-FF06E42BB5D8}
+	EndGlobalSection
+EndGlobal

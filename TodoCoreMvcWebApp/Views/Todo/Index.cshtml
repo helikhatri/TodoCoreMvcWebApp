@@ -1,0 +1,92 @@
+﻿@using static TodoCoreMvcWebApp.Models.Task
+@model IEnumerable<TodoCoreMvcWebApp.Models.Task>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-3">
+            <h2 class="text-primary">Task List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Todo" asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Create New Task
+            </a>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="col-6 text-center">
+            <form class="d-flex">
+                <input class="form-control me-sm-2" type="text" placeholder="Search" name="SearchText">
+                <button class="btn btn-secondary my-2 my-sm-0" asp-controller="Todo" asp-action="Index" type="submit">Search</button>
+                <button class="btn btn-secondary my-2 mx-2 my-sm-0" asp-controller="Todo" asp-action="Index" type="submit" onclick="this.form.clear()">Clear</button>
+            </form>
+        </div>
+    </div>
+    <br /><br />
+    <div class="row pt-4 scroll w-75 p-3">
+        <table class="table table-responsive table-bordered table-striped" style="height: 300px !important;">
+            <thead>
+                <tr>
+                    <th>
+                        Task Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        Created Date
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var obj in Model)
+                {
+                    <form asp-action="UpdateStatus" method="post" name="Task">
+                    <tr>
+                        <td>
+                            @obj.Title
+                        </td>
+                        <td>
+                         <input asp-for="@obj.Title" name="Title" id="Title" hidden />
+                         <input asp-for="@obj.Id" name="Id" id="Id" hidden />
+                            <select id="Status" class="form-control" name="Status" asp-for="@obj.Status" asp-items="Html.GetEnumSelectList<TStatus>()"
+                                onchange="this.form.submit()">
+                                <option value="">--Select--</option>
+                            </select>
+                        </td>
+                        <td>
+                            @Convert.ToDateTime(obj.CreatedDate).ToString("dd/MM/yy HH:mm tt")
+                        </td>
+                        <td>
+                            <a asp-controller="Todo" asp-action="Edit" asp-route-id="@obj.Id" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                            <a href="javascript:DeleteTask(@obj.Id)" title="Delete"><i class="bi bi-trash3"></i></a>
+                            <a asp-controller="Todo" asp-action="Clone" asp-route-id="@obj.Id" title="Clone"><i class="bi bi-clipboard"></i></a>
+                        </td>
+                    </tr>
+                     </form>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+@section scripts {
+<script type="text/javascript">
+    function DeleteTask(id)
+     {
+         if (confirm('Are you sure you want to delete Task?'))
+         {
+            window.location.href = '/Todo/Delete/'+id+'';
+         }
+         else
+         {
+              return false;
+         }
+     }
+</script>
+    }
+
